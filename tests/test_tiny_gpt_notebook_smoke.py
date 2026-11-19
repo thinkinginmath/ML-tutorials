@@ -58,15 +58,21 @@ class TinyGptNotebookTest(unittest.TestCase):
 
     def test_only_the_new_notebook_was_added(self):
         names = {path.name for path in ROOT.glob("*.ipynb")}
-        self.assertEqual(names - ORIGINAL_NOTEBOOKS, {"Tutorial_Understand_a_Tiny_GPT.ipynb"})
+        self.assertEqual(
+            names - ORIGINAL_NOTEBOOKS,
+            {
+                "Tutorial_Understand_a_Tiny_GPT.ipynb",
+                "Tutorial_CLIP_Text_to_Image_Search.ipynb",
+            },
+        )
         digest = hashlib.sha256(MNIST_PATH.read_bytes()).hexdigest()
         self.assertEqual(digest, MNIST_SHA256)
 
     def test_colab_badge_uses_the_review_branch(self):
         first = _source(self.notebook["cells"][0])
         self.assertIn("thinkinginmath/ML-tutorials", first)
-        self.assertIn("cursor/tiny-gpt-character-tutorial-9992", first)
         self.assertIn("blob/main/Tutorial_Understand_a_Tiny_GPT.ipynb", first)
+        self.assertNotIn("cursor/tiny-gpt-character-tutorial-9992", first)
         self.assertNotIn("weidongshao", first)
 
     def test_headings_and_clean_sources(self):

@@ -1,18 +1,21 @@
-Placeholder for video tutorials
+# Machine learning tutorials
 
-## Character-level tiny GPT
+Hands-on notebooks from [Thinking in Math](https://github.com/thinkinginmath). Video lessons are on the [YouTube channel](https://www.youtube.com/channel/UC5uV1LcSkHL5zCxKBikdTEg).
 
-[Tutorial_Understand_a_Tiny_GPT.ipynb](Tutorial_Understand_a_Tiny_GPT.ipynb) trains a small decoder-only Transformer in PyTorch on a public-domain Shakespeare subset, then inspects the causal mask, position embeddings, context length, and sampling temperature.
+| Notebook | What it teaches | Open |
+| --- | --- | --- |
+| [Neural net from scratch (MNIST, NumPy only)](Tutorial_Neural_Network_From_Scatch_(MNIST_with_NumPy_only).ipynb) | Supervised classification: forward pass, cross-entropy, backpropagation, and mini-batch training. | [GitHub](https://github.com/thinkinginmath/ML-tutorials/blob/main/Tutorial_Neural_Network_From_Scatch_(MNIST_with_NumPy_only).ipynb) · [Colab](https://colab.research.google.com/github/thinkinginmath/ML-tutorials/blob/main/Tutorial_Neural_Network_From_Scatch_(MNIST_with_NumPy_only).ipynb) |
+| [CLIP text-to-image search](Tutorial_CLIP_Text_to_Image_Search.ipynb) | Pretrained image and text embeddings, cosine ranking, and retrieval quality on a public COCO slice. | [GitHub](https://github.com/thinkinginmath/ML-tutorials/blob/main/Tutorial_CLIP_Text_to_Image_Search.ipynb) · [Colab](https://colab.research.google.com/github/thinkinginmath/ML-tutorials/blob/main/Tutorial_CLIP_Text_to_Image_Search.ipynb) |
+| [Tiny character-level GPT](Tutorial_Understand_a_Tiny_GPT.ipynb) | A small decoder-only Transformer: causal attention, positions, context length, and sampling temperature. | [GitHub](https://github.com/thinkinginmath/ML-tutorials/blob/main/Tutorial_Understand_a_Tiny_GPT.ipynb) · [Colab](https://colab.research.google.com/github/thinkinginmath/ML-tutorials/blob/main/Tutorial_Understand_a_Tiny_GPT.ipynb) |
 
-Open in Colab on the review branch `cursor/tiny-gpt-character-tutorial-9992`. That link works before the pull request merges. The `main` link does not open this notebook until then.
+The MNIST notebook is unchanged. Its in-notebook badge still points at the historical `weidongshao/ML-tutorials` path; the links in this README are the current `thinkinginmath` repository.
 
-- Review branch: https://colab.research.google.com/github/thinkinginmath/ML-tutorials/blob/cursor/tiny-gpt-character-tutorial-9992/Tutorial_Understand_a_Tiny_GPT.ipynb
-- After merge: https://colab.research.google.com/github/thinkinginmath/ML-tutorials/blob/main/Tutorial_Understand_a_Tiny_GPT.ipynb
+Tutorial text that states a license uses [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). CLIP weights are MIT, from OpenAI, and are not stored in this repository. COCO annotations are CC BY 4.0; the photographs stay under their Flickr licenses and are downloaded only when the CLIP notebook runs. The Shakespeare subset used by the tiny GPT notebook is public domain and is downloaded at runtime.
 
-The notebook text is [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). The Shakespeare subset is downloaded at runtime and is not stored in this repository.
+## Checks
 
 ```bash
-python -m unittest tests.test_tiny_gpt_notebook_smoke
+python -m unittest tests.test_clip_notebook_smoke tests.test_tiny_gpt_notebook_smoke
 ```
 
-Leave `TINY_GPT_TRAIN_STEPS` unset for the default lesson. `TINY_GPT_LONG=1` trains longer. A value of `2` only checks that the code path runs; do not quote those losses.
+Leave `CLIP_TUTORIAL_MAX_IMAGES` unset for the default 200-image CLIP lesson. Setting it to `8` only checks that the code path runs. Leave `TINY_GPT_TRAIN_STEPS` unset for the 400-step GPT lesson. `TINY_GPT_LONG=1` trains for 2,000 steps. A value of `2` only checks that the cells run. Quote scores from a default run, not from a smoke setting.

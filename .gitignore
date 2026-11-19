@@ -1,4 +1,4 @@
-# Runtime downloads. Do not commit text, photographs, or weights.
+# Runtime downloads. Do not commit text, photographs, or model weights.
 data/
 .ipynb_checkpoints/
 __pycache__/
