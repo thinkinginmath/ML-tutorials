@@ -134,6 +134,8 @@ class NotebookSchemaTest(unittest.TestCase):
         self.assertAlmostEqual(namespace["recall_at_k"](ranks, 1), 1 / 3, places=5)
         self.assertAlmostEqual(namespace["chance_recall_at_k"](5, 200), 0.025, places=6)
         self.assertAlmostEqual(namespace["chance_median_rank"](200), 100.5, places=6)
+        self.assertAlmostEqual(namespace["median_rank"](torch.tensor([0, 0, 9, 9])), 5.5, places=6)
+        self.assertAlmostEqual(namespace["median_rank"](torch.tensor([0, 2, 4])), 3.0, places=6)
         self.assertAlmostEqual(
             namespace["multilabel_recall_at_k"](["dog", "cat", "car"], {"dog", "boat"}, 2),
             0.5,
