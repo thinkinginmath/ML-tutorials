@@ -1,1 +1,26 @@
-Placeholder for video tutorials
+# Machine learning tutorials
+
+Hands-on notebooks from [Thinking in Math](https://github.com/thinkinginmath). Video lessons are on the [YouTube channel](https://www.youtube.com/channel/UC5uV1LcSkHL5zCxKBikdTEg).
+
+| Notebook | What it teaches | Open |
+| --- | --- | --- |
+| [Neural net from scratch (MNIST, NumPy only)](Tutorial_Neural_Network_From_Scatch_(MNIST_with_NumPy_only).ipynb) | Supervised classification: forward pass, cross-entropy, backpropagation, and mini-batch training. | [GitHub](https://github.com/thinkinginmath/ML-tutorials/blob/main/Tutorial_Neural_Network_From_Scatch_(MNIST_with_NumPy_only).ipynb) · [Colab](https://colab.research.google.com/github/thinkinginmath/ML-tutorials/blob/main/Tutorial_Neural_Network_From_Scatch_(MNIST_with_NumPy_only).ipynb) |
+| [CLIP text-to-image search](Tutorial_CLIP_Text_to_Image_Search.ipynb) | Pretrained image and text embeddings, cosine ranking, and an honest look at retrieval quality on a public COCO slice. | [GitHub](https://github.com/thinkinginmath/ML-tutorials/blob/cursor/clip-text-to-image-search-9992/Tutorial_CLIP_Text_to_Image_Search.ipynb) · [Colab](https://colab.research.google.com/github/thinkinginmath/ML-tutorials/blob/cursor/clip-text-to-image-search-9992/Tutorial_CLIP_Text_to_Image_Search.ipynb) |
+
+The CLIP Colab link uses the review branch `cursor/clip-text-to-image-search-9992`. The `main` URL will not open that notebook until the pull request is merged:
+
+https://colab.research.google.com/github/thinkinginmath/ML-tutorials/blob/main/Tutorial_CLIP_Text_to_Image_Search.ipynb
+
+The MNIST notebook is unchanged. Its in-notebook badge still points at the historical `weidongshao/ML-tutorials` path; the links in this README are the current `thinkinginmath` repository.
+
+Tutorial text that states a license uses [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). CLIP weights are MIT, from OpenAI, and are not stored in this repository. COCO annotations are CC BY 4.0; the photographs stay under their Flickr licenses and are downloaded only when the CLIP notebook runs.
+
+## Checks
+
+Ranking math and notebook structure, with no model download:
+
+```bash
+python -m unittest tests.test_clip_notebook_smoke
+```
+
+Leave `CLIP_TUTORIAL_MAX_IMAGES` unset to run the default 200-image lesson inside the notebook. Setting it to `8` only checks that the code path runs. Quote retrieval scores from a default run, not from that smoke setting.

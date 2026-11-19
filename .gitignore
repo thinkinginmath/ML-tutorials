@@ -1,0 +1,6 @@
+# Runtime downloads for the CLIP tutorial. Do not commit photographs or weights.
+data/
+.ipynb_checkpoints/
+__pycache__/
+.pytest_cache/
+*.pyc
