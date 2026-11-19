@@ -57,9 +57,11 @@ class NotebookSchemaTest(unittest.TestCase):
     def test_colab_badge_points_at_thinkinginmath_review_branch(self):
         first = _source(self.notebook["cells"][0])
         self.assertIn("thinkinginmath/ML-tutorials", first)
-        self.assertIn("cursor/clip-text-to-image-search-9992", first)
-        self.assertIn("Tutorial_CLIP_Text_to_Image_Search.ipynb", first)
-        self.assertIn("blob/main/Tutorial_CLIP_Text_to_Image_Search.ipynb", first)
+        self.assertIn(
+            "blob/main/Tutorial_CLIP_Text_to_Image_Search.ipynb",
+            first,
+        )
+        self.assertNotIn("cursor/clip-text-to-image-search-9992", first)
         self.assertNotIn("weidongshao", first)
 
     def test_headings_are_in_teaching_order(self):

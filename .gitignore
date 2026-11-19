@@ -1,4 +1,4 @@
-# Runtime downloads for the CLIP tutorial. Do not commit photographs or weights.
+# Runtime downloads. Do not commit text, photographs, or model weights.
 data/
 .ipynb_checkpoints/
 __pycache__/
