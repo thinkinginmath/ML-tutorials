@@ -1,1 +1,18 @@
 Placeholder for video tutorials
+
+## Character-level tiny GPT
+
+[Tutorial_Understand_a_Tiny_GPT.ipynb](Tutorial_Understand_a_Tiny_GPT.ipynb) trains a small decoder-only Transformer in PyTorch on a public-domain Shakespeare subset, then inspects the causal mask, position embeddings, context length, and sampling temperature.
+
+Open in Colab on the review branch `cursor/tiny-gpt-character-tutorial-9992`. That link works before the pull request merges. The `main` link does not open this notebook until then.
+
+- Review branch: https://colab.research.google.com/github/thinkinginmath/ML-tutorials/blob/cursor/tiny-gpt-character-tutorial-9992/Tutorial_Understand_a_Tiny_GPT.ipynb
+- After merge: https://colab.research.google.com/github/thinkinginmath/ML-tutorials/blob/main/Tutorial_Understand_a_Tiny_GPT.ipynb
+
+The notebook text is [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). The Shakespeare subset is downloaded at runtime and is not stored in this repository.
+
+```bash
+python -m unittest tests.test_tiny_gpt_notebook_smoke
+```
+
+Leave `TINY_GPT_TRAIN_STEPS` unset for the default lesson. `TINY_GPT_LONG=1` trains longer. A value of `2` only checks that the code path runs; do not quote those losses.

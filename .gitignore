@@ -1,0 +1,6 @@
+# Runtime downloads. Do not commit text, photographs, or weights.
+data/
+.ipynb_checkpoints/
+__pycache__/
+.pytest_cache/
+*.pyc
